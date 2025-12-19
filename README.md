@@ -115,7 +115,7 @@ Frontend will typically run on `http://localhost:5173`.
 | `metadata` | Object | Snapshot of balances before/after, IP, User-Agent |
 | `status` | String | Final status of the operation |
 
-## AI Tool Usage Log (MANDATORY)
+## AI Tool Usage Log 
 
 | Task | AI Tool / Agent Action | Outcome |
 |------|------------------------|---------|
@@ -124,3 +124,4 @@ Frontend will typically run on `http://localhost:5173`.
 | **Frontend Components** | Generated `TransactionHistory.jsx` with sorting logic. | Delivered a responsive, sortable table component without external libraries. |
 | **Verification** | Verified API endpoints and frontend integration. | Confirmed all features work as expected (Atomicity, Real-time updates). |
 | **Documentation** | Generated complete `README.md` and Database Schema documentation. | Provided clear instructions for setup and architecture overview. |
+
