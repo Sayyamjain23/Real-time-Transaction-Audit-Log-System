@@ -20,24 +20,25 @@ This project implements a secure, atomic transaction system for fund transfers b
 ### System Architecture
 ```mermaid
 graph TD
-    Client[Client (React/Vite)] <-->|REST API| API[API Server (Express)]
-    API <-->|Auth/Queries| Auth[Auth Middleware]
-    API <-->|Reads/Writes| DB[(MongoDB)]
+    Client[Client - React Vite] -->|REST API| API[API Server - Express]
+    API -->|Auth Queries| Auth[Auth Middleware]
+    API -->|Reads Writes| DB[(MongoDB)]
     
     subgraph Database
-    DB -- Stores --> Users[User Collection]
-    DB -- Stores --> Tx[Transaction Collection]
-    DB -- Stores --> Logs[AuditLog Collection]
+        DB --> Users[User Collection]
+        DB --> Tx[Transaction Collection]
+        DB --> Logs[AuditLog Collection]
     end
     
-    subgraph "Atomic Transaction"
-    API -- Start Session --> Session[Mongoose Session]
-    Session -- Debit --> Users
-    Session -- Credit --> Users
-    Session -- Create --> Tx
-    Session -- Create --> Logs
-    Session -- Commit/Abort --> DB
+    subgraph Atomic_Transaction
+        API --> Session[Mongoose Session]
+        Session -->|Debit| Users
+        Session -->|Credit| Users
+        Session -->|Create| Tx
+        Session -->|Create| Logs
+        Session -->|Commit Abort| DB
     end
+
 ```
 
 ## Setup/Run Instructions
@@ -162,3 +163,4 @@ Frontend will typically run on `http://localhost:5173`.
 | **Frontend Components** | Generated `TransactionHistory.jsx` with sorting logic. | Delivered a responsive, sortable table component without external libraries. |
 | **Verification** | Verified API endpoints and frontend integration. | Confirmed all features work as expected (Atomicity, Real-time updates). |
 | **Documentation** | Generated complete `README.md` and Database Schema documentation. | Provided clear instructions for setup and architecture overview. |
+
