@@ -164,16 +164,17 @@ Frontend will typically run on `http://localhost:5173`.
 | **Verification** | Verified API endpoints and frontend integration. | Confirmed all features work as expected (Atomicity, Real-time updates). |
 | **Documentation** | Generated complete `README.md` and Database Schema documentation. | Provided clear instructions for setup and architecture overview. |
 
-### AI-Assisted Tasks
+## AI-Assisted Tasks
 - **Backend Implementation**: Generated `transactionController.js` boilerplate using MongoDB transactions (`startSession`, `startTransaction`). This ensured robust atomic transfer logic and data consistency.
 - **Audit Service**: Implemented `AuditService.js` utilizing an async logging pattern. This decoupled audit logging from the main transaction flow, maintaining performance.
 - **Frontend Components**: Generated `TransactionHistory.jsx` with built-in sorting logic. This delivered a responsive, sortable table component without relying on heavy external libraries.
 - **Verification**: executed verification steps for API endpoints and frontend integration to confirm features (Atomicity, Real-time updates) worked as expected.
 - **Documentation**: Generated comprehensive documentation including `README.md`, `SETUP.md`, `INSTALL_MONGODB.md`, and Database Schema diagrams.
 
-### Effectiveness Score
+## Effectiveness Score
 **Score: 5/5**
 
 **Justification**: The AI tool significantly accelerated the development lifecycle acting as a primary driver for both code generation and documentation. It handled complex boilerplate (like MongoDB Sessions), created a full frontend UI, and wrote extensive installation guides in a fraction of the time it would take manually. The generated solution for atomic transactions was syntactically correct and functional on the first pass, saving hours of debugging potential race conditions.
+
 
 
