@@ -10,6 +10,36 @@ This project implements a secure, atomic transaction system for fund transfers b
 - **Real-time Frontend**: React-based dashboard that updates balances and transaction history instantly upon transfer.
 - **Sortable History**: Dynamic table with sorting capabilities for transaction records.
 
+### Tech Stack
+- **Frontend**: React (Vite), TailwindCSS, Zustand (State Management), Axios
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB (Mongoose ORM) with Transactions
+- **Authentication**: JWT (JSON Web Tokens), BCrypt
+- **Tools**: Postman (API Testing), Git
+
+### System Architecture
+```mermaid
+graph TD
+    Client[Client (React/Vite)] <-->|REST API| API[API Server (Express)]
+    API <-->|Auth/Queries| Auth[Auth Middleware]
+    API <-->|Reads/Writes| DB[(MongoDB)]
+    
+    subgraph Database
+    DB -- Stores --> Users[User Collection]
+    DB -- Stores --> Tx[Transaction Collection]
+    DB -- Stores --> Logs[AuditLog Collection]
+    end
+    
+    subgraph "Atomic Transaction"
+    API -- Start Session --> Session[Mongoose Session]
+    Session -- Debit --> Users
+    Session -- Credit --> Users
+    Session -- Create --> Tx
+    Session -- Create --> Logs
+    Session -- Commit/Abort --> DB
+    end
+```
+
 ## Setup/Run Instructions
 
 ### Prerequisites
@@ -115,7 +145,15 @@ Frontend will typically run on `http://localhost:5173`.
 | `metadata` | Object | Snapshot of balances before/after, IP, User-Agent |
 | `status` | String | Final status of the operation |
 
-## AI Tool Usage Log 
+## References
+- [React Documentation](https://react.dev/)
+- [Express.js Documentation](https://expressjs.com/)
+- [MongoDB Transactions](https://www.mongodb.com/docs/manual/core/transactions/)
+- [Mongoose Documentation](https://mongoosejs.com/)
+- [TailwindCSS Documentation](https://tailwindcss.com/)
+- [Vite Documentation](https://vitejs.dev/)
+
+## AI Tool Usage Log (MANDATORY)
 
 | Task | AI Tool / Agent Action | Outcome |
 |------|------------------------|---------|
@@ -124,4 +162,3 @@ Frontend will typically run on `http://localhost:5173`.
 | **Frontend Components** | Generated `TransactionHistory.jsx` with sorting logic. | Delivered a responsive, sortable table component without external libraries. |
 | **Verification** | Verified API endpoints and frontend integration. | Confirmed all features work as expected (Atomicity, Real-time updates). |
 | **Documentation** | Generated complete `README.md` and Database Schema documentation. | Provided clear instructions for setup and architecture overview. |
-
