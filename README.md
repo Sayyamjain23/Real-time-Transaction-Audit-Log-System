@@ -154,7 +154,7 @@ Frontend will typically run on `http://localhost:5173`.
 - [TailwindCSS Documentation](https://tailwindcss.com/)
 - [Vite Documentation](https://vitejs.dev/)
 
-## AI Tool Usage Log (MANDATORY)
+## AI Tool Usage Log 
 
 | Task | AI Tool / Agent Action | Outcome |
 |------|------------------------|---------|
@@ -175,6 +175,7 @@ Frontend will typically run on `http://localhost:5173`.
 **Score: 5/5**
 
 **Justification**: The AI tool significantly accelerated the development lifecycle acting as a primary driver for both code generation and documentation. It handled complex boilerplate (like MongoDB Sessions), created a full frontend UI, and wrote extensive installation guides in a fraction of the time it would take manually. The generated solution for atomic transactions was syntactically correct and functional on the first pass, saving hours of debugging potential race conditions.
+
 
 
 
