@@ -1,12 +1,16 @@
 {
-  "name": "task",
+  "name": "transaction-audit-root",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install-client": "cd client && npm install",
+    "install-server": "cd server && npm install",
+    "build-client": "cd client && npm run build",
+    "postinstall": "npm run install-client && npm run install-server && npm run build-client",
+    "start": "cd server && npm start"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "Root configuration for deployment"
 }

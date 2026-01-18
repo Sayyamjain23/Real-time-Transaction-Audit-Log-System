@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
+import path from 'path'; // <--- ADDED
+import { fileURLToPath } from 'url'; // <--- ADDED
 import connectDB from './config/database.js';
 import routes from './routes/index.js';
 
@@ -10,6 +12,12 @@ dotenv.config();
 
 // Create Express app
 const app = express();
+
+// ========================
+// Helper for ES Modules
+// ========================
+const __filename = fileURLToPath(import.meta.url); // <--- ADDED
+const __dirname = path.dirname(__filename);        // <--- ADDED
 
 // ========================
 // Middleware
@@ -53,6 +61,23 @@ app.get('/health', (req, res) => {
 
 // API routes
 app.use('/api', routes);
+
+// ========================
+// Serve Frontend (DEPLOYMENT)
+// ========================
+if (process.env.NODE_ENV === 'production') {
+    // 1. Serve static files from the React build
+    app.use(express.static(path.join(__dirname, '../client/dist')));
+
+    // 2. Handle React routing (return index.html for non-API requests)
+    app.get('*', (req, res, next) => {
+        // If it's an API request that wasn't caught above, pass to 404 handler
+        if (req.path.startsWith('/api')) {
+            return next();
+        }
+        res.sendFile(path.resolve(__dirname, '../client', 'dist', 'index.html'));
+    });
+}
 
 // 404 handler
 app.use((req, res) => {
