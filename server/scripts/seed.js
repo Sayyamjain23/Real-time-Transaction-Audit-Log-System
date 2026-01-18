@@ -91,8 +91,8 @@ const seedDatabase = async () => {
             }
         }
 
-        console.log('\n✅ Database seeding completed!');
-        console.log('\n📝 Demo Account Credentials:');
+        console.log('Database seeding completed!');
+        console.log('Demo Account Credentials:');
         console.log('   Email: alice@demo.com | Password: password123');
         console.log('   Email: bob@demo.com | Password: password123');
         console.log('   Email: charlie@demo.com | Password: password123');
