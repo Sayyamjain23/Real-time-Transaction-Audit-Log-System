@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white min-h-screen font-sans;
+  }
+}
+
+@layer components {
+
+  /* Card styles */
+  .card {
+    @apply bg-gray-800/50 backdrop-blur-lg rounded-2xl border border-gray-700/50 shadow-xl;
+  }
+
+  .card-glow {
+    @apply card hover:shadow-glow transition-shadow duration-300;
+  }
+
+  /* Button styles */
+  .btn {
+    @apply px-6 py-3 rounded-lg font-semibold transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900;
+  }
+
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-primary-600 to-primary-500 hover:from-primary-700 hover:to-primary-600 text-white focus:ring-primary-500 shadow-lg hover:shadow-glow;
+  }
+
+  .btn-secondary {
+    @apply btn bg-gray-700 hover:bg-gray-600 text-white focus:ring-gray-500;
+  }
+
+  .btn-danger {
+    @apply btn bg-gradient-to-r from-danger to-danger-dark hover:from-danger-dark hover:to-danger text-white focus:ring-danger;
+  }
+
+  .btn-success {
+    @apply btn bg-gradient-to-r from-success to-success-dark hover:from-success-dark hover:to-success text-white focus:ring-success;
+  }
+
+  /* Input styles */
+  .input {
+    @apply w-full px-4 py-3 bg-gray-700/50 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-300;
+  }
+
+  .input:focus {
+    @apply bg-gray-700;
+  }
+
+  /* Label styles */
+  .label {
+    @apply block text-sm font-semibold text-gray-300 mb-2;
+  }
+
+  /* Error message */
+  .error-message {
+    @apply text-red-400 text-sm mt-1 animate-fade-in;
+  }
+
+  /* Success message */
+  .success-message {
+    @apply text-green-400 text-sm mt-1 animate-fade-in;
+  }
+
+  /* Badge styles */
+  .badge {
+    @apply inline-block px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-success {
+    @apply badge bg-success/20 text-success-light border border-success/30;
+  }
+
+  .badge-danger {
+    @apply badge bg-danger/20 text-danger-light border border-danger/30;
+  }
+
+  .badge-warning {
+    @apply badge bg-yellow-500/20 text-yellow-400 border border-yellow-500/30;
+  }
+
+  /* Table styles */
+  .table-container {
+    @apply overflow-x-auto rounded-lg;
+  }
+
+  .table {
+    @apply w-full text-left;
+  }
+
+  .table thead {
+    @apply bg-gray-800/70 border-b border-gray-700;
+  }
+
+  .table th {
+    @apply px-6 py-4 text-xs font-semibold text-gray-300 uppercase tracking-wider cursor-pointer hover:text-primary-400 transition-colors;
+  }
+
+  .table tbody tr {
+    @apply border-b border-gray-700/50 hover:bg-gray-700/30 transition-colors;
+  }
+
+  .table td {
+    @apply px-6 py-4 text-sm;
+  }
+
+  /* Loading spinner */
+  .spinner {
+    @apply inline-block w-6 h-6 border-4 border-gray-600 border-t-primary-500 rounded-full animate-spin;
+  }
+
+  /* Page container */
+  .page-container {
+    @apply min-h-screen flex items-center justify-center px-4 py-12;
+  }
+
+  /* Dashboard container */
+  .dashboard-container {
+    @apply max-w-7xl mx-auto px-4 py-8;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-primary-600;
+  }
+
+  .glass {
+    @apply bg-white/5 backdrop-blur-lg;
+  }
+}
