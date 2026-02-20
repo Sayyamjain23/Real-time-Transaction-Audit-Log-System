@@ -144,13 +144,7 @@ const startServer = async () => {
     }
 };
 
-// Only start the server when running locally (not on Vercel serverless)
-if (process.env.VERCEL !== '1') {
-    startServer();
-}
-
-// Export app for Vercel serverless runtime
-export default app;
+startServer();
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err) => {
