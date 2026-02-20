@@ -12,7 +12,6 @@ dotenv.config();
 
 // Create Express app
 const app = express();
-app.set('trust proxy', 1);
 
 // ========================
 // Helper for ES Modules
@@ -145,7 +144,13 @@ const startServer = async () => {
     }
 };
 
-startServer();
+// Only start the server when running locally (not on Vercel serverless)
+if (process.env.VERCEL !== '1') {
+    startServer();
+}
+
+// Export app for Vercel serverless runtime
+export default app;
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err) => {
