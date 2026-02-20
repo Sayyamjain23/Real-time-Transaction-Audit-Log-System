@@ -7,14 +7,14 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 
 function App() {
-  const { initialize, isLoading } = useStore();
+  const { initialize, isInitializing } = useStore();
 
   // Initialize app on mount
   useEffect(() => {
     initialize();
   }, [initialize]);
 
-  if (isLoading) {
+  if (isInitializing) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
