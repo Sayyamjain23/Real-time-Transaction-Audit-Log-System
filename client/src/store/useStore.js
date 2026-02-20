@@ -12,7 +12,8 @@ export const useStore = create((set, get) => ({
     // ========================
     user: null,
     isAuthenticated: false,
-    isLoading: false,
+    isInitializing: true,  // only for app startup check
+    isLoading: false,      // only for login/register form actions
     error: null,
 
     // ========================
@@ -35,19 +36,18 @@ export const useStore = create((set, get) => ({
      */
     initialize: async () => {
         try {
-            set({ isLoading: true, error: null });
+            set({ isInitializing: true });
             const data = await authAPI.getCurrentUser();
             set({
                 user: data.user,
                 isAuthenticated: true,
-                isLoading: false,
+                isInitializing: false,
             });
         } catch (error) {
             set({
                 user: null,
                 isAuthenticated: false,
-                isLoading: false,
-                error: null, // Don't show error on initial load
+                isInitializing: false,
             });
         }
     },
