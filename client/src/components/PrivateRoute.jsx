@@ -6,9 +6,9 @@ import useStore from '../store/useStore';
  * Redirects to login if user is not authenticated
  */
 export default function PrivateRoute({ children }) {
-    const { isAuthenticated, isLoading } = useStore();
+    const { isAuthenticated, isInitializing } = useStore();
 
-    if (isLoading) {
+    if (isInitializing) {
         return (
             <div className="min-h-screen flex items-center justify-center">
                 <span className="spinner mr-3"></span>
