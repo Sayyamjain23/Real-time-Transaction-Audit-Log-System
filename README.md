@@ -20,25 +20,29 @@ This project implements a secure, atomic transaction system for fund transfers b
 ### System Architecture
 ```mermaid
 graph TD
-    Client[Client (React/Vite)] <-->|REST API| API[API Server (Express)]
-    API <-->|Auth/Queries| Auth[Auth Middleware]
-    API <-->|Reads/Writes| DB[(MongoDB)]
-    
-    subgraph Database
-    DB -- Stores --> Users[User Collection]
-    DB -- Stores --> Tx[Transaction Collection]
-    DB -- Stores --> Logs[AuditLog Collection]
-    end
-    
-    subgraph "Atomic Transaction"
-    API -- Start Session --> Session[Mongoose Session]
-    Session -- Debit --> Users
-    Session -- Credit --> Users
-    Session -- Create --> Tx
-    Session -- Create --> Logs
-    Session -- Commit/Abort --> DB
-    end
-```
+
+Client[Client (React/Vite)] -->|HTTP REST API| API[Express API Server]
+
+API --> Auth[Auth Middleware]
+Auth --> Controller[Transfer Controller / Route Handler]
+
+Controller -->|Read/Write| Mongo[(MongoDB)]
+
+Mongo --> Users[Users Collection]
+Mongo --> Tx[Transactions Collection]
+Mongo --> Logs[AuditLogs Collection]
+
+
+subgraph "MongoDB Atomic Transaction"
+Controller -->|startSession()| Session[MongoDB Session]
+
+Session -->|Debit Sender| Users
+Session -->|Credit Receiver| Users
+Session -->|Insert Transaction| Tx
+Session -->|Insert Audit Log| Logs
+
+Session -->|commitTransaction() / abortTransaction()| Mongo
+end
 
 ## Setup/Run Instructions
 
